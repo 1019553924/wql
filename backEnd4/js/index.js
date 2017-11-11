@@ -1,12 +1,14 @@
 // 该文件是用来写echarts这个图表的文件
-
-$(function(){
-    var firstDom = document.querySelector('.lt-canvas .picTable:first-child');
-
-    var zhuChart = echarts.init(firstDom);
+$(function () {
+  // 获取盛柱状图的容器
+  var firstDom = document.querySelector('.lt-canvas .picTable:first-child');
 
 
-    var option = {
+  // 基于准备好的dom，初始化echarts实例
+  var zhuChart = echarts.init(firstDom);
+
+
+  var option = {
     title: {
       text: '2017年注册人数'
     },
@@ -52,9 +54,6 @@ $(function(){
 
   // 使用刚指定的配置项和数据显示图表。
   zhuChart.setOption(option);
-  window.addEventListener("resize",function(){
-    zhuChart.resize();
-  });
 
 
   // 饼图
@@ -104,10 +103,6 @@ $(function(){
 
    // 使用刚指定的配置项和数据显示图表。
    pieChart.setOption(secondoption);
-   window.onresize = function(){
-pieChart.resize();
-zhuChart.resize();
 
 
-}
-});
+})
