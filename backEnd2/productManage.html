@@ -92,7 +92,7 @@
 
         </ol>
         <div class="lt-content">
-          <a href="#first-modal" data-toggle="modal" class="btn btn-default">添加商品</a>
+          <a href="#product-modal" data-toggle="modal" class="btn btn-default">添加商品</a>
           <table class="table table-bordered table-hover" style="margin-top: 20px">
             <thead>
               <tr class="text-center">
@@ -128,7 +128,7 @@
     </div>
   </section>
 
-  <div class="modal fade" id="first-modal" tabindex="-1">
+  <div class="modal fade" id="product-modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -138,7 +138,7 @@
           <h4 class="modal-title" id="myModalLabel">编辑商品</h4>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="productform">
             <div class="form-group">
               <label class="sr-only" for="proName"></label>
               <input type="text" class="form-control" name="proName" id="proName" placeholder="请输入商品名称">
@@ -169,17 +169,20 @@
             </div>
 
             <div class="form-group fileupload">
-              <label class="sr-only" for="pic"></label>
-              <a href="javascript:;" class="btn btn-default">上传图片</a>
-              <input type="file" class="form-control" name="pic" id="pic" placeholder="请输入商品尺码">
-              <span>提示： 必须上传三个图片</span>
+             <div style="margin-bottom: 20px">
+                <label class="sr-only" for="pic"></label>
+                <a href="javascript:;" class="btn btn-default">上传图片</a>
+                <input type="file" class="form-control" name="pic1" id="pic">
+                <span>提示： 必须上传三个图片</span>
+             </div>
+              
             </div>
 
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" id="save" class="btn btn-primary">确定</button>
+          <button type="submit" id="save" class="btn btn-primary" form="productform" >确定</button>
         </div>
       </div>
     </div>
@@ -213,6 +216,9 @@
   <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <!-- 引入分页插件 -->
   <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+  
   <!-- 引入进度条插件 -->
   <script src="./lib/nprogress/nprogress.js"></script>
   <!-- 引入admin文件 -->
