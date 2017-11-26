@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+    new Vue({
+        data: function() {
+            return {
+                heros: [{ id: 1, name: '李白' }, { id: 2, name: '娜可露露' }, { id: 3, name: '后羿' }, { id: 4, name: '貂蝉' }],
+            }
+        },
+        template: `
+                <div>
+                    <ul>
+                        <li v-for="(item,index) in heros" :key="index">{{item.name}}{{item.id}}{{index}}</li>
+                    </ul>
+
+                    <button @click="heros[1].name='哈哈哈' ">修改第2个英雄</button>
+                    <button @click="heros.splice(1,1); ">删除第2个英雄</button>
+                </div>
+            `,
+        el: '#app'
+    });
+    </script>
+</body>
+
+</html>

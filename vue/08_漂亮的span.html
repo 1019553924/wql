@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .className{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+
+    <script type="text/javascript" src="./vue.js"></script>
+
+    <script type="text/javascript">
+         //数据
+        var data = {
+            text:'呵呵哈哈',
+            className:'red'
+        };
+        //页面
+        var template = `
+            <div>
+                <input type="text" v-bind:value="text" />
+                <span v-bind:class="className">{{text}}</span>
+                <button @click="changeColor">改变颜色</button>
+        
+                <span :class="className">v-bind简化写法</span>
+                
+            </div>
+
+        `;
+        //启动
+        new Vue({
+            methods:{
+                changeColor:function(){
+                    this.className = 'yellow';
+                }
+            },
+            el:'#app',
+            data:data,
+            template:template
+        })
+
+    </script>
+
+
+</body>
+</html>

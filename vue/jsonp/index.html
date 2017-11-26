@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>sublime server服务器</title>
+</head>
+<body>
+    http://localhost:9000
+    <button>测试jsonp</button>
+
+    <script type="text/javascript">
+    // Uncaught SyntaxError: Unexpected token :
+        {"name":"jack"}
+    </script>
+
+    <script type="text/javascript">
+        // function test1234(obj){
+        //     console.log(obj);
+        // }
+        document.querySelector('button').onclick = function(){
+            // 创建一个script标签
+            var script = document.createElement('script');
+
+            //生成一个不重复的名字
+            var callbackname = 'callback_'+ Date.now();
+            //挂载全局函数
+            window[callbackname] = function(data){
+                console.log(data)
+            }
+
+            script.src = 'http://localhost:8888/test-jsonp?callback=' + callbackname;
+            //插入到body中
+            document.body.appendChild(script);
+
+
+
+        }
+
+
+    </script>
+</body>
+</html>

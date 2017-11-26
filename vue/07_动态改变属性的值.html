@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>06_常用指令</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+
+    <script type="text/javascript" src="./vue.js"></script>    
+    <script type="text/javascript">
+        var template = `
+            <div>
+                v-text:其实就是设置元素的innerText，只能是双标签
+                <input type="text" v-text="text" />
+                <span v-text="text"></span>
+                <hr/>
+                v-html:其实就是设置元素的innerHTML，只能是双标签
+                <input type="text" v-html="html" />
+                <span v-html="html"></span>
+                <hr/>
+                v-if:是元素的移除与插入,v-else与其要是邻居
+                <button v-if="vIf">我是一个球</button>
+                <!--<button v-else >我是else球</button>-->
+                <hr/>
+                v-show:是元素的显示与隐藏
+                <h2 v-show="vShow">我显示了</h2>
+
+                <!--
+                <button v-on:click="vIf = !vIf;vShow = !vShow" >点我大变化</button>
+                -->
+
+                <!--<button v-on:click="myChange" >通过函数变化</button>-->
+                <button @click="myChange" >v-on简写</button>
+
+            </div>
+        `;
+        new Vue({
+            //目的地
+            el:'#app',
+            //数据
+            data:{
+                text:'helloworld',
+                html:`
+                    <h1>我是html</h1>
+                `,
+                vIf:false,
+                vShow:false,
+            },
+            //函数功能
+            methods:{
+                //名称可以改变
+                myChange:function(){
+                    // console.log('函数被调用了');
+                    //在函数中操作配置对象中的data的属性，需要通过this.
+                    this.vIf = !this.vIf;
+                    this.vShow = !this.vShow;
+                }
+            },
+            //页面
+            template:template
+        })
+
+    </script>
+
+</body>
+</html>

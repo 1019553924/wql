@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>01_原生实现页面值的改变影响内存值的改变</title>
+</head>
+<body>
+<!-- 页面 -->
+    请输入: <input type="text" name="" id="i">
+
+    <script type="text/javascript">
+        // 数据
+        var text = 'abc';
+
+        document.getElementById('i').onkeyup = function(e){
+            // console.log(e.target.value);
+            // 页面改变影响内存
+            text = e.target.value;
+        }
+
+
+    </script>
+
+</body>
+</html>

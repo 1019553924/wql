@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+        <script type="text/javascript" src="./vue.js"></script>
+        <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            template:`
+                <div>
+                    <div>
+                        <ul>
+                            <li v-for="(hero,index) in heros " :key="index" :style="'background-color:'+(index%2==0?'hotpink':'greenyellow') ">
+                                    {{hero.id}} {{hero.name}}
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                </div>
+            `
+
+            data:function(){
+                return{
+                    heros: [{ id: 1, name: '杨玉环' }, { id: 2, name: '王昭君' }, { id: 3, name: '西施' }, { id: 4, name: '貂蝉' }],
+                }
+            }
+        })
+        </script>
+
+</body>
+</html>

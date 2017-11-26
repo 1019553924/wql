@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>12_英雄增删改查案例</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+    //启动
+    new Vue({
+        el: '#app',
+        template: `
+                <div>
+                    <!--列表功能-->
+            <div >
+                        <ul>
+                          
+                        <li v-for="(hero,index) in heros" :key="index" :style="'background-color:'+ (index%2==0?'hotpink':'greenyellow')   ">
+                           {{hero.id}} {{hero.name}}
+                        </li>
+                        </ul>
+                    </div>
+                    
+                     <!--添加功能-->
+                    <div style="background-color:hotpink;">
+                       ID:<input type="text" v-model="addId" />
+                       英雄名称: <input type="text" v-model="addName" />
+                       <button @click="addHero">添加英雄</button>
+                    </div>
+
+                     <!--更改功能-->
+                    <div style="background-color:greenyellow;">
+                       ID:<input type="text" v-model="updateId" />
+                       英雄名称: <input type="text" v-model="updateName" />
+                       <button @click="updateHero">更新英雄</button>
+                    </div>
+
+                    <!--删除功能-->
+                    <div style="background-color:skyblue;">
+                       ID:<input type="text" v-model="delId" />
+                       <button @click="delHero(delId)">删除英雄</button>
+                    </div>
+                    
+
+                </div>
+   
+            `,
+        methods: {
+            //添加英雄
+            addHero: function() {
+                this.heros.push({
+                    id: this.addId,
+                    name: this.addName
+                });
+                //清空添加
+                this.addId = '';
+                this.addName = '';
+            },
+            updateHero: function() {
+                //获取要更新的id
+                var hero = this.heros.find(ele => ele.id == this.updateId);
+                if (!hero) { //  undefined和元素
+                    alert('没有找到该英雄');
+                    return
+                }
+                hero.name = this.updateName;
+                //清空添加
+                this.updateId = '';
+                this.updateName = '';
+            },
+            delHero: function(id) {
+                var index = this.heros.findIndex(ele => ele.id == id);
+                if (index == -1) { //  undefined和元素
+                    alert('没有找到该英雄');
+                    return
+                }
+
+                //删除元素
+                this.heros.splice(index,1);
+
+
+            }
+        },
+        data: function() {
+            return {
+                heros: [{ id: 1, name: '杨玉环' }, { id: 2, name: '王昭君' }, { id: 3, name: '西施' }, { id: 4, name: '貂蝉' }],
+                addId: '', //是data的属性以后，能否在methods获取这个变量
+                //在methods中获取需要this.addId
+                addName: '',
+                updateId: '', //更新id
+                updateName: '', //更新名称
+                delId:'',//删除id
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

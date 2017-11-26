@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>04_vue简单使用</title>
+</head>
+<body>
+    <!-- 留坑 元素替换这一部分-->
+    <div id="app"></div>
+
+    <!-- 引包 -->
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+        var obj = {
+            text:'abc'
+        };
+        // console.log(Vue);
+        new Vue({
+            //框架生效的元素范围
+            el:document.getElementById('app'),
+            //页面
+            template:`
+                <div>
+                     {{text}}
+                     页面的改变影响内存
+                    <input type="text" v-model="text" />           
+                </div>
+            `,
+            //数据
+            data:obj, //页面中用到的都是data对象的属性
+        })
+    </script>
+</body>
+</html>

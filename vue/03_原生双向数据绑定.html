@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>03_原生双向数据绑定</title>
+</head>
+
+<body>
+    <!-- 页面 -->
+    请输入:
+    <input type="text" name="" id="i">
+    <script type="text/javascript">
+    // 数据
+    var obj = {
+        text: '1234'
+    }
+    //页面改变影响内存
+    document.getElementById('i').onkeyup = function(e) {
+        // 页面改变影响内存
+        obj.text = e.target.value;
+    }
+    //内存改变影响页面
+    var input = document.getElementById('i');
+    //存储obj.text的数据
+    var tmp = '';
+    Object.defineProperty(obj, 'text', {
+        set: function(newV) {
+            //改变DOM
+            input.value = newV;
+            //记录值
+            tmp = newV;
+            //obj.text = newV; //反复触发set
+        },
+        get:function(){
+            return tmp;
+        }
+    });
+    </script>
+</body>
+
+</html>

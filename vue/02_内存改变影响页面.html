@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 页面 -->
+    请输入: <input type="text" name="" id="i">
+
+    <script type="text/javascript">
+        // 获取这个元素(页面)
+        var input = document.getElementById('i');
+        //数据(数据)
+        //转换,将对象中的属性存储该值
+        var obj = { text:'abc'  };
+        //监视obj这个对象中的text属性值的改变
+        Object.defineProperty(obj,'text',{
+            set:function(newV){
+                // console.log('js内存中obj.text改变了');
+                // console.log(newV);
+                //改变DOM
+                input.value = newV;
+            }
+        })
+    </script>
+
+
+</body>
+</html>

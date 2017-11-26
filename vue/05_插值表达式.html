@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>05_插值表达式内可以放语法部分的任意东西</title>
+</head>
+<body>
+    <!-- 1:引入包 -->
+    <!-- 2:div id=app -->
+    <!-- 3:启动 new Vue -->
+    <!-- 4:声明数据、页面、目的地 -->
+    <div class="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+        //数据
+        var data = {
+            text:'hello', //字符串
+            name:'jack', //解决错误的示范
+        }
+        //页面
+        var template = `
+            <div>
+                变量:{{text}}<br/>
+                错误的示范，不是在data属性中的变量:
+                    {{name}}<br/>
+                常量:
+                字符串:{{'world'}}<br/>
+                对象:{{ {name:'jack'} }}<br/>
+                判断语句:  {{ 'a'=='a'   }}<br/>
+                三元表达式: {{ 'a'=='a'?'是':'否'   }}<br/>
+                <!-- 不能if {{   if(true){ 'a'  }   }} -->
+            </div>
+
+        `;
+        new Vue({
+            //是一个对象或者一个函数返回一个对象
+            data:data,
+            //页面
+            template:template,
+            //目的地
+            el:'.app'
+        });
+
+
+    </script>
+</body>
+</html>

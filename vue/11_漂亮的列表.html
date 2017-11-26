@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>12_漂亮的列表</title>
+    <style>
+        .red{
+            background-color: hotpink;
+        }
+        .green{
+            background-color: yellowgreen;
+        }
+        .c{
+            background-color: skyblue;
+        }
+        .d{
+            background-color: #666;
+        }
+        .big{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el:'#app',
+            template:`
+                <div>
+                    从三元表达式选择一个样式(字符串):
+                    <ul>
+                        <li :class="index%2 == 0?'red':'green'"    v-for="(hero,index) in heros" :key="index">
+                            {{hero.name}} {{index}} {{hero.score}}
+                        </li>
+                    </ul>
+                    从对象中选择一个样式(字符串):
+                     <ul>
+                        <li :class=" list[hero.score]"    v-for="(hero,index) in heros" :key="index">
+                            {{hero.name}} {{index}} {{hero.score}}
+                        </li>
+                    </ul>
+                    返回一个对象，代表多个样式 {'red':true,'big':true}
+                    <ul>
+                        <li :class=" {red:true,big:true} "    v-for="(hero,index) in heros" :key="index">
+                            {{hero.name}} {{index}} {{hero.score}}
+                        </li>
+                    </ul>
+                    深入浅出以上的样式思想 red big
+                    <ul>
+                        <li :class=" 'red'+' big' "    v-for="(hero,index) in heros" :key="index">
+                            {{hero.name}} {{index}} {{hero.score}}
+                        </li>
+                    </ul>
+
+                </div>
+            `,
+            data:function(){
+                return {
+                    //颜色参照表
+                    list:{A:'red',B:'green',C:'c',D:'d'},
+                    heros:[{id:1,name:'李白',score:'A'  },{id:2,name:'娜可露露' ,score:'C'  },{id:3,name:'貂蝉',score:'B' },{id:4,name:'王昭君' ,score:'D'  }]
+                }
+            }
+        })
+    </script>
+</body>
+</html>
