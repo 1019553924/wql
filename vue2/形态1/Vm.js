@@ -1,0 +1,1 @@
+var vm = new Vue(); //用来通信

@@ -1,0 +1,64 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+    //头部组件
+        var MyHeader = {
+            template:`
+                <div style="background-color:yellowgreen;height:150px;">
+                    我是头部
+                </div>
+            `
+        }
+    //中部组件
+        var MyBody = {
+            template:`
+                <div style="background-color:hotpink;height:300px;">
+                    我是中部
+                </div>
+            `
+        }
+ //底部组件
+        var MyFooter = {
+            template:`
+                <div style="background-color:greenyellow;height:150px;">
+                    我是底部
+                </div>
+            `
+        }
+
+        //主体组件
+        var App = {
+            components:{
+                'my-header':MyHeader,
+                'my-body':MyBody,
+                'my-footer':MyFooter
+            },
+            template:`
+                <div>
+                    <my-header></my-header>
+                    <my-body></my-body>
+                    <my-footer></my-footer>
+                </div>
+
+            `
+        }
+
+
+
+        //启动
+        new Vue({
+            //目的地
+            el:'#app',
+            //渲染内容
+            render:c=>c(App)
+        });
+
+    </script>
+</body>
+</html>

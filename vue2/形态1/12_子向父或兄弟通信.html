@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- 问题:文件依赖顺序 -->
+    <script type="text/javascript" src="../vue.js"></script>
+    <!-- Vm依赖vue -->
+    <script type="text/javascript" src="./Vm.js"></script>
+    <!-- Sub 依赖vm-->
+    <script type="text/javascript" src="./Sub.js"></script>
+    <!-- App依赖vm和Sub -->
+    <script type="text/javascript" src="./App.js"></script>
+    <!-- 问题:同名变量命名冲突 -->
+    <!-- <script type="text/javascript">
+        var App = null;
+    </script> -->
+    <!-- main依赖于App.js -->
+    <script type="text/javascript" src="./main.js"></script>
+</body>
+</html>

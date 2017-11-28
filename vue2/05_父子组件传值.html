@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>05_父子组件传值</title>
+</head>
+<body>
+    
+    <div id="app"></div>
+
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+    // 父向子传值
+    //  1:子声明接收参数
+    //  2:父通过属性的方式传递
+        var MyShow = {
+            template:`
+                <div style="background-color:red;">
+                    <h1>{{title}}</h1>
+                </div>
+            `,
+            // 是一个数组,子组件能接收的参数是多个
+            props:['title'],
+            data:function(){
+                return {
+                    text:'def'
+                }
+            }
+        }
+        var App = {
+            components:{
+                'my-show':MyShow
+            },
+            template:`
+                <div>
+                    <my-show title="哈哈呵呵"></my-show>
+                    <my-show v-bind:title="text"></my-show>
+                </div>
+            `,
+            data:function(){
+                return {
+                    text:'abc'
+                }
+            }
+        };
+
+
+
+        // 启动
+        new Vue({
+            el:'#app',
+            render: c=>c(App)
+        });
+
+
+    </script>
+</body>
+</html>

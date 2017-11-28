@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+       var App = {
+            template:`
+
+            <div>
+                <input type="text" v-model="n1"/> + 
+                <input type="text" v-model="n2"/> *
+                <input type="text" v-model="rate"/> = 
+                    {{result.name}}{{result.num}}
+            </div>
+            `,
+            data:function(){
+                return {
+                    n1:'',
+                    n2:'',
+                    rate:''
+                }
+            },
+            computed:{
+                result:function(){
+                    console.log('触发计算属性了');
+                    return {
+                        num:((this.n1-0) + (this.n2-0)) * this.rate,
+                        name:'合计是:'
+                    }
+                }
+            }
+       }
+
+
+        new Vue({
+            el:'#app',
+            render:c=>c(App)
+        });
+
+
+    </script>
+</body>
+</html>

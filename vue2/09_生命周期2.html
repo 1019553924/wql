@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+    //创建子组件
+    var Sub = {
+        template:`<div>
+            我是子组件
+        </div>`,
+         activated:function(){  //激活停用模式
+                console.log('activated');
+        },
+        deactivated:function(){ //激活停用模式
+            console.log('deactivated');
+        },
+        // beforeDestroy:function(){  //销毁组件
+        //     console.log('beforeDestroy');
+        // },
+        // destroyed:function(){   //销毁组件
+        //     console.log('destroyed');
+        // },
+        // created:function(){
+        //     console.log('created')
+        // },
+    }
+
+
+    //创建App组件
+        var App = {
+            components:{
+                'sub-vue':Sub
+            },
+            data:function(){
+                return {
+                    text:true
+                }
+            },
+            template:`
+                <div>
+                    <keep-alive>
+                        <sub-vue v-if="text"></sub-vue>
+                    </keep-alive>
+                    <button @click="text = !text">移除或插入组件</button>
+                </div>
+
+
+            <!--
+                <div>
+                    {{text}}
+                    <button @click="text = !text">改变数据</button>
+                </div>
+            -->
+            `,
+            // beforeUpdate:function(){  //更改数据
+            //     //this.text = true;
+            //     //this.text = '更新前'; //对数据进行二次更新
+            //     console.log('beforeUpdate');
+            // },
+            // //更新中
+            // updated:function(){  //更改数据
+            //      // this.text = '更新后'; 引起更新钩子函数触发
+            //     console.log('updated');
+            // },
+            
+        }
+
+
+        new Vue({
+            el:'#app',
+            render:c=>c(App)
+        });
+
+    </script>
+</body>
+</html>

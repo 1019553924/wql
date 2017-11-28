@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+    //子组件，让子组件内支持一些功能html + css +js
+    var Sub = {
+        template:`
+            <div style="background-color:red;">
+                我是子组件
+            </div>
+        `
+    };
+
+
+    //主体组件
+    var App = {
+        //声明子组件
+        components:{
+            //使用子组件的名:子组件对象
+            'my-sub':Sub
+        },
+        template:`
+            <div>
+                <my-sub></my-sub>
+                {{text}}
+                <button v-on:click="show">点我show</button>
+            </div>
+        `,
+        data:function(){
+            return {
+                text:'主体组件:同样保证一个根节点'
+            }
+        },
+        methods:{
+            show:function(){
+                alert('show')
+            }
+        }
+    }
+
+
+
+    //启动
+    new Vue({
+        //目的地
+        el:'#app',
+        //渲染内容
+        render:c=>c(App)
+    });
+
+
+    </script>
+</body>
+</html>

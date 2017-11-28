@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>01_组件</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+        var App = {
+            template:`
+                <div>
+                    {{text}}
+                </div>
+            `,
+            data:function(){
+                return {
+                    text:'helloworld1111'
+                }
+            }
+        };
+
+
+       
+        new Vue({ // 启动,
+            el:'#app', //目的地
+            // render:function(createElement){
+            //     //返回一堆DOM，未来包含度组件依赖的关系
+            //     return createElement(App);
+            // },
+            // render:function(c){
+            //     //返回一堆DOM，未来包含度组件依赖的关系
+            //     return c(App);
+            // }
+            render:c=>c(App),//渲染的内容
+            
+        });
+
+
+    </script>
+</body>
+</html>

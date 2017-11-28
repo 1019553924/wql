@@ -1,0 +1,92 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">    
+        // * beforeCreate 创建之前
+        // * created 创建之后
+        // * beforeMount 装载前(将数据与页面放入真实的页面的)
+        // * mounted 装载后(将数据与页面放入真实的页面的)
+        // * beforeUpdate 更新数据前
+        // * updated 更新数据后
+        // * activated 激活组件
+        // * deactivated 组件停用
+        // * beforeDestroy 销毁之前
+        // * destroyed 销毁后
+        var App = {
+            template:`<div>
+                <span ref="span">你们来拿我</span>
+                我是app
+            </div>`,
+
+            /*
+                 1:beforeCreate 数据没有初始化，没有数据
+                 2:created 可以操作数据
+                 3:beforeMount 没有装载数据到页面
+                 4:mounted 已经转载数据到页面
+
+                 created和mounted各自的应用场景
+                        created适合操作(数据)
+                        mounted适合操作(DOM)
+
+
+             */
+            data(){
+                return {
+                    text:'abc'
+                }
+            },
+            //创建
+            // beforeCreate:function(){  
+            //     console.log(this.text);
+            // },
+            created:function(){
+                // console.log(this.text);
+                //ref="span"
+                console.log(this.$refs.span);
+
+            },
+            //装载数据
+            beforeMount:function(){
+                 // console.log(this.text);
+                 console.log(this.$refs.span);
+            },
+            mounted:function(){
+                // console.log(this.text);
+                console.log(this.$refs.span);
+            },
+            // beforeUpdate:function(){  //更改数据
+            //     console.log('beforeUpdate');
+            // },
+            // updated:function(){  //更改数据
+            //     console.log('updated');
+            // },
+
+            // activated:function(){  //激活停用模式
+            //     console.log('activated');
+            // },
+            // deactivated:function(){ //激活停用模式
+            //     console.log('deactivated');
+            // },
+            //  beforeDestroy:function(){  //销毁组件
+            //     console.log('beforeDestroy');
+            // },
+            // destroyed:function(){   //销毁组件
+            //     console.log('destroyed');
+            // },
+        }
+
+
+        new Vue({
+            el:'#app',
+            render:c=>c(App)
+        })
+
+
+    </script>
+</body>
+</html>

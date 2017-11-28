@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="./vue.js"></script>
+    <script type="text/javascript">
+
+        var App = {
+            data:function(){
+                return {
+                    text:'',
+                    num:1,
+                    hero:{ name:'jack'   }
+                }
+            },
+            watch:{
+               'num':function(newV,oldV){
+                    console.log('num改變了');
+                    // console.log('num改变啦'+ newV);
+                    // console.log('num改变啦'+ oldV);
+               },
+               //这种监视能解决对象引用的改变
+               // 'hero':function(newV,oldV){  
+               //      console.log('hero改变了');
+               // }
+               // 深度监视
+               'hero':{
+                   deep:true,
+                   handler:function(newV,oldV){
+                        console.log('hero改变了');
+                   }
+               }
+            },
+            template:`
+                <div>
+                    我是app
+                    <input type="text" v-model="text" @change="doChange"/>
+                    <button @click="num++">更改num</button>
+                    <input type="text" v-model="num" />
+
+                    <button @click="hero.name ='rose' ">更改hero</button>
+                    {{hero}}
+                </div>
+            `,
+            methods:{
+                doChange:function(){
+                    console.log(this.text);
+                }
+            }
+        }
+
+        new Vue({
+            el:'#app',
+            render:c=>c(App)
+        })
+
+    </script>
+</body>
+</html>
